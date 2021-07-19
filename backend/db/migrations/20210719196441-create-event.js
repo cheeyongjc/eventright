@@ -16,12 +16,10 @@ module.exports = {
       venueId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'Venues' }
       },
       categoryId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'Categories' }
       },
       name: {
         type: Sequelize.STRING,
