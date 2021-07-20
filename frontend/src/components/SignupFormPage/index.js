@@ -31,57 +31,56 @@ function SignupFormPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='signup-submit'>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <label>
-        Username
+      <label className='signup-label'>
         <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          placeholder='Username'
         />
       </label>
-      <label>
-        First Name
+      <label className='signup-label'>
         <input
           type="text"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
+          placeholder='First Name'
         />
       </label>
-      <label>
-        Last Name
+      <label className='signup-label'>
         <input
           type="text"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
+          placeholder='Last Name'
         />
       </label>
-      <label>
-        Email
+      <label className='signup-label'>
         <input
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          placeholder='Email'
         />
       </label>
-      <label>
-        Password
+      <label className='signup-label'>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-
+          placeholder='Password'
         />
       </label>
-      <label>
-        Confirm Password
+      <label className='signup-label'>
         <input
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
+          placeholder='Confirm Password'
         />
       </label>
       <button type="submit">Sign Up</button>
