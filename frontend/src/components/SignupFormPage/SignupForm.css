@@ -1,0 +1,10 @@
+.signup-container{
+    position: relative;
+    width: fit-content;
+}
+
+.signup-form{
+    display: grid;
+    align-items: center;
+}
+
