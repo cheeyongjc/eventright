@@ -21,11 +21,11 @@ function App() {
           <Route path='/' exact>
             <Event />
           </Route>
-          <Route path='/:id' exact>
-            <Event single={true} />
-          </Route>
           <Route path="/signup" exact>
             <SignupFormPage />
+          </Route>
+          <Route path='/:id' exact>
+            <Event single={true} />
           </Route>
         </Switch>
       )}

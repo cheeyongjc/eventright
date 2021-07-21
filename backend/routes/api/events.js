@@ -8,5 +8,8 @@ router.get('/', asyncHandler(async (_req, res) => {
 	const events = await Event.findAll();
 	return res.json(events);
 }));
-
+router.get('/:id', asyncHandler(async (req, res) => {
+	const event = await Event.findByPk(req.params.id);
+	return res.json(event);
+}))
 module.exports = router;

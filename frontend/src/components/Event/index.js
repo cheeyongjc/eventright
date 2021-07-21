@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getEventThunk } from '../../store/event';
 import { useHistory } from 'react-router-dom';
+import './Event.css';
 
 export default function Event({ single }) {
 	const dispatch = useDispatch();
@@ -28,14 +29,20 @@ export default function Event({ single }) {
 		)
 	}
 	return (
-		<div>
-			{events?.map((event) => (
-				<>
-					<h1>{event.name}</h1>
-					<img src={event?.image} alt={event?.name} onClick={e => handleEventClick(e, event.id)} />
-				</>
-			))}
+		<>
+			<div className='eventBackground'>
+				<img src='https://photodumpeventsright.s3.us-east-2.amazonaws.com/photodump/background+for+homepage' alt='background'></img>
+			</div>
+			<div className='eventsContainer'>
+				{events?.map((event) => (
+					<>
+						<h1 className='eventName'>{event.name}</h1>
+						<img src={event?.image} alt={event?.name} onClick={e => handleEventClick(e, event.id)} />
+						<h2 className='eventdescription'>{event.description}</h2>
+					</>
+				))}
 
-		</div>
+			</div>
+		</>
 	)
 }
