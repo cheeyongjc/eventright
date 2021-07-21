@@ -10,16 +10,13 @@ module.exports = {
       },
       hostId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references: { model: 'Users' }
       },
       venueId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
       },
       categoryId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
       },
       name: {
         type: Sequelize.STRING,

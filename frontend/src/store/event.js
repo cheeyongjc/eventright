@@ -6,11 +6,9 @@ const ADD_EVENTS = 'event/ADD_EVENT';
 export const getEvents = (events) => {
 	return { type: GET_EVENTS, events };
 }
-export const addEvent = event => {
+export const addEvent = events => {
 	return {
-		type: ADD_EVENTS,
-		payload: event,
-	};
+		type: ADD_EVENTS, events };
 }
 
 export const getEventThunk = () => async (dispatch) => {
@@ -47,6 +45,8 @@ const eventReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case GET_EVENTS:
 			return { ...state, events: [...action.events] };
+		case ADD_EVENTS:
+			return {...state, events:[...action.events]};
 		default:
 			return state;
 	}

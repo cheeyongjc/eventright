@@ -3,15 +3,12 @@ module.exports = (sequelize, DataTypes) => {
   const Event = sequelize.define('Event', {
     hostId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
     },
     venueId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
     },
     categoryId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
     },
     name: {
       type: DataTypes.STRING,
