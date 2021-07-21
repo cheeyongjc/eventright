@@ -30,15 +30,17 @@ export default function Event({ single }) {
 	}
 	return (
 		<>
-			<div className='eventBackground'>
-				<img src='https://photodumpeventsright.s3.us-east-2.amazonaws.com/photodump/background+for+homepage' alt='background'></img>
+			<div className='background-container'>
+				<img className='eventBackground' src='https://photodumpeventsright.s3.us-east-2.amazonaws.com/48-487865_festival-coachella.png' alt='background'></img>
 			</div>
 			<div className='eventsContainer'>
 				{events?.map((event) => (
 					<>
-						<h1 className='eventName'>{event.name}</h1>
-						<img src={event?.image} alt={event?.name} onClick={e => handleEventClick(e, event.id)} />
-						<h2 className='eventdescription'>{event.description}</h2>
+						<div className='eventContainer'>
+							<img className='eventImages' src={event?.image} alt={event?.name} onClick={e => handleEventClick(e, event.id)} />
+							<h1 className='eventName'>{event.name}</h1>
+							<h2 className='eventDescription'>{event.description}</h2>
+						</div>
 					</>
 				))}
 

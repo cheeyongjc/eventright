@@ -5,7 +5,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
@@ -23,10 +23,11 @@ function Navigation({ isLoaded }){
   }
   return (
     <ul>
-      <li>
+      <div>
+        {/* <img className='logoImage' src='https://photodumpeventsright.s3.us-east-2.amazonaws.com/logo' alt='logo'></img> */}
         <NavLink exact to="/" className='home-nav'>Home</NavLink>
         {isLoaded && sessionLinks}
-      </li>
+      </div>
     </ul>
   );
 }
