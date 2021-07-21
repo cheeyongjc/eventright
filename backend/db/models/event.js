@@ -47,10 +47,7 @@ module.exports = (sequelize, DataTypes) => {
     const { id, hostId, venueId, categoryId, name } = this;
     return { id, hostId, venueId, categoryId, name };
   };
-  async function eventList(){
-    return await Event.findAll();
-  };
-  Event.createEvent = async function({hostId, venueId, categoryId, name, date, start_time, end_time, description, image}){
+  Event.createEvent = async function ({ hostId, venueId, categoryId, name, date, start_time, end_time, description, image }) {
     const event = await Event.create({
       hostId,
       venueId,
@@ -62,6 +59,7 @@ module.exports = (sequelize, DataTypes) => {
       description,
       image,
     });
+    return await Event.findByPk(event.id);
   };
   return Event;
 };
