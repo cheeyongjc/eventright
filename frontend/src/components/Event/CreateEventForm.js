@@ -14,17 +14,18 @@ function CreateEventForm() {
     const [image, setImage] = useState('');
     const [errors, setErrors] = useState([]);
 
-    if (!sessionUser) return <Redirect to='/signup' />;
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        setErrors([]);
-        return dispatch(createEventThunk({ name, date, start_time, end_time, description, image }))
-            .catch(
-                async (res) => {
-                    const data = await res.json();
-                    if (data && data.errors) setErrors(data.errors);
-                });
+        if (sessionUser) {
+            setErrors([]);
+            return dispatch(createEventThunk({ name, date, start_time, end_time, description, image }))
+                .catch(
+                    async (res) => {
+                        const data = await res.json();
+                        if (data && data.errors) setErrors(data.errors);
+                    });
+        }
+        return <Redirect to="/signup" />
     };
 
     return (
