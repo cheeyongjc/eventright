@@ -1,31 +1,22 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createEventThunk } from '../../store/event';
-import { Redirect } from "react-router-dom";
 
 function CreateEventForm() {
     const dispatch = useDispatch();
-    const sessionUser = useSelector((state) => state.session.user);
+    // const sessionUser = useSelector((state) => state.session.user);
     const [name, setName] = useState('');
     const [date, setDate] = useState('');
     const [start_time, setStart_time] = useState('');
     const [end_time, setEnd_Time] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
-    const [errors, setErrors] = useState([]);
+    const [errors] = useState([]);
+    const { user } = useSelector((state) => state.session);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (sessionUser) {
-            setErrors([]);
-            return dispatch(createEventThunk({ name, date, start_time, end_time, description, image }))
-                .catch(
-                    async (res) => {
-                        const data = await res.json();
-                        if (data && data.errors) setErrors(data.errors);
-                    });
-        }
-        return <Redirect to="/signup" />
+        return dispatch(createEventThunk({ hostId: user.id, name, date, start_time, end_time, description, image }));
     };
 
     return (
@@ -83,7 +74,7 @@ function CreateEventForm() {
                         placeholder='Enter an image URL here'
                     />
                 </label>
-                <button type='submit' className='createEventBtn'>Create New Event</button>
+                <button type='submit' className='createEventBtn' onClick={e => handleSubmit(e)}>Create New Event</button>
             </form>
         </div>
     )
