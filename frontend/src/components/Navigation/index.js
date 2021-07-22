@@ -27,7 +27,7 @@ function Navigation({ isLoaded }) {
     <ul>
       <div>
         <NavLink exact to="/" className='home-nav'>
-        <img className='logoImage' src='https://photodumpeventsright.s3.us-east-2.amazonaws.com/logo' alt='logo' />
+        <img className='logoImage' src='https://photodumpeventsright.s3.us-east-2.amazonaws.com/large.png' alt='logo' />
         </NavLink>
         <NavLink exact to='/create' className='create-nav'>Create Event</NavLink>
         {isLoaded && sessionLinks}
