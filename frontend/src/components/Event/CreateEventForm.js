@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { createEventThunk } from '../../store/event';
 
 function CreateEventForm() {
@@ -13,10 +14,14 @@ function CreateEventForm() {
     const [image, setImage] = useState('');
     const [errors] = useState([]);
     const { user } = useSelector((state) => state.session);
+    const history = useHistory();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        return dispatch(createEventThunk({ hostId: user.id, name, date, start_time, end_time, description, image }));
+        let createdEvent = await dispatch(createEventThunk({ hostId: user.id, name, date, start_time, end_time, description, image }));
+        if (createdEvent) {
+            history.push(`/`);
+        }
     };
 
     return (
@@ -74,7 +79,7 @@ function CreateEventForm() {
                         placeholder='Enter an image URL here'
                     />
                 </label>
-                <button type='submit' className='createEventBtn' onClick={e => handleSubmit(e)}>Create New Event</button>
+                <button type='submit' className='createEventBtn'>Create New Event</button>
             </form>
         </div>
     )
