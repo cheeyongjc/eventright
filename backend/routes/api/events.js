@@ -32,7 +32,8 @@ router.get('/', asyncHandler(async (_req, res) => {
 }));
 
 router.get('/:id', asyncHandler(async (req, res) => {
-	const event = await Event.findByPk(req.params.id);
+	const event = await Event.findByPk(req.params.id,
+		{include:[Users]});
 	return res.json(event);
 }));
 

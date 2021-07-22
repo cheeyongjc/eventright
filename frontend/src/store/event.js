@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 
 const GET_EVENTS = 'event/GET_EVENT';
 const ADD_EVENT = 'event/ADD_EVENT';
+const DELETE_EVENT = 'event/DELETE_EVENT';
 
 export const getEvents = (events) => {
 	return { type: GET_EVENTS, events };
@@ -12,6 +13,11 @@ export const addEvent = event => {
 		type: ADD_EVENT, event
 	};
 }
+export const deleteEvent = () => {
+	return {
+		type: DELETE_EVENT,
+	}
+};
 
 export const getEventThunk = () => async (dispatch) => {
 	const response = await fetch(`/api/events`);
@@ -40,16 +46,28 @@ export const createEventThunk = (event) => async dispatch => {
 		return response;
 	}
 };
+export const deleteEventThunk = (id) => async dispatch => {
+	const response = await csrfFetch(`/api/:id`, {
+		method: 'DELETE',
+	});
+	dispatch(deleteEvent());
+	return response;
+};
 const initialState = {
 	events: []
 };
 
 const eventReducer = (state = initialState, action) => {
+	let newState;
 	switch (action.type) {
 		case GET_EVENTS:
 			return { ...state, events: [...action.events] };
 		case ADD_EVENT:
 			return { ...state, events: [action.event] };
+		case DELETE_EVENT:
+			newState = Object.assign({}, state);
+			newState.user = null;
+			return newState;
 		default:
 			return state;
 	}

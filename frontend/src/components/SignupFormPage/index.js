@@ -32,6 +32,7 @@ function SignupFormPage() {
 
   return (
     <div className='signup-container'>
+      <h1>Create an account to create or register for an event</h1>
       <form onSubmit={handleSubmit} className='signup-form'>
         <div className='signup-error-container'>
           <ul>
