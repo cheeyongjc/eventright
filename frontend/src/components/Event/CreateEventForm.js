@@ -83,7 +83,7 @@ function CreateEventForm() {
                         placeholder='Enter an image URL here'
                     />
                 </label>
-                <button type='submit'>Create New Event</button>
+                <button type='submit' className='createEventBtn'>Create New Event</button>
             </form>
         </div>
     )

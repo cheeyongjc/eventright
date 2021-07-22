@@ -8,10 +8,12 @@ import './Navigation.css';
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
 
+
+
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <ProfileButton user={sessionUser} className='profilebtn'/>
     );
   } else {
     sessionLinks = (
@@ -24,8 +26,9 @@ function Navigation({ isLoaded }) {
   return (
     <ul>
       <div>
-        {/* <img className='logoImage' src='https://photodumpeventsright.s3.us-east-2.amazonaws.com/logo' alt='logo'></img> */}
-        <NavLink exact to="/" className='home-nav'>Home</NavLink>
+        <NavLink exact to="/" className='home-nav'>
+        <img className='logoImage' src='https://photodumpeventsright.s3.us-east-2.amazonaws.com/logo' alt='logo' />
+        </NavLink>
         <NavLink exact to='/create' className='create-nav'>Create Event</NavLink>
         {isLoaded && sessionLinks}
       </div>
