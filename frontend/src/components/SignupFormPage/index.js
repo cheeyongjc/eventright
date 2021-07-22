@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import * as sessionActions from "../../store/session";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import * as sessionActions from '../../store/session';
 import './SignupForm.css';
 
 function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [username, setUsername] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to='/' />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,7 +40,7 @@ function SignupFormPage() {
         </div>
         <label className='signup-label'>
           <input
-            type="text"
+            type='text'
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder='Username'
@@ -48,7 +48,7 @@ function SignupFormPage() {
         </label>
         <label className='signup-label'>
           <input
-            type="text"
+            type='text'
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             placeholder='First Name'
@@ -56,7 +56,7 @@ function SignupFormPage() {
         </label>
         <label className='signup-label'>
           <input
-            type="text"
+            type='text'
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             placeholder='Last Name'
@@ -64,7 +64,7 @@ function SignupFormPage() {
         </label>
         <label className='signup-label'>
           <input
-            type="text"
+            type='text'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder='Email'
@@ -72,7 +72,7 @@ function SignupFormPage() {
         </label>
         <label className='signup-label'>
           <input
-            type="password"
+            type='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder='Password'
@@ -80,13 +80,13 @@ function SignupFormPage() {
         </label>
         <label className='signup-label'>
           <input
-            type="password"
+            type='password'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             placeholder='Confirm Password'
           />
         </label>
-        <button type="submit" className='signup-btn'>Sign Up</button>
+        <button type='submit' className='signup-btn'>Sign Up</button>
       </form>
     </div>
   );

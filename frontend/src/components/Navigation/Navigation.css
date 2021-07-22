@@ -1,6 +1,14 @@
-.signup-nav{
-   float: right;
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&display=swap');
+
+.profilebtn{
+    float:right;
 }
-.home-nav{
-    float:left;
+.profile-dropdown{
+    float:right;
+}
+.signupBtn{
+    float: right;
+}
+.createBtn{
+    align-items: flex-end;
 }

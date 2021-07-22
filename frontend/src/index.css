@@ -1,1 +1,7 @@
 /* TODO Add site wide styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&display=swap');
+
+* {
+    font-family: 'Shippori Mincho', serif;
+}
