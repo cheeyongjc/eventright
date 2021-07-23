@@ -49,13 +49,14 @@ export const createEventThunk = (event) => async dispatch => {
 	if (response.ok) {
 		const events = await response.json();
 		dispatch(addEvent(events.event));
-		return response;
+		return events;
 	}
 };
 export const updateEventThunk = (id, event) => async dispatch => {
+	console.log(event, 'inside thunk');
 	const response = await csrfFetch(`/api/events/${id}/edit`, {
 		method: 'PUT',
-		headers: { 'Content-Type': 'applications/json' },
+		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(event),
 	});
 	if (response.ok) {
@@ -86,7 +87,7 @@ const eventReducer = (state = initialState, action) => {
 		case ADD_EVENT:
 			return { ...state, events: [action.event] };
 		case UPDATE_EVENT:
-			return { ...state, events: [...action.event] };
+			return { ...state, events: [action.event] };
 		case DELETE_EVENT:
 			return { ...state, events: [action.event] }
 		default:

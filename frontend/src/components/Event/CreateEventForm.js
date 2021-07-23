@@ -19,6 +19,7 @@ function CreateEventForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrors([]);
         let createdEvent = await dispatch(createEventThunk({ hostId: user.id, name, date, start_time, end_time, description, image }))
         .catch(async(response)=>{
             const data = await response.json();
