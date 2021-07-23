@@ -32,7 +32,10 @@ function SignupFormPage() {
 
   return (
     <div className='signup-container'>
-      <h1>Create an account to create or register for an event</h1>
+      <div classname='background-container'>
+      <img className='signup-background' src='https://photodumpeventsright.s3.us-east-2.amazonaws.com/48-487865_festival-coachella.png' alt='background'></img>
+      </div>
+      <h1>Sign up to create an event</h1>
       <form onSubmit={handleSubmit} className='signup-form'>
         <div className='signup-error-container'>
           <ul>
@@ -41,6 +44,7 @@ function SignupFormPage() {
         </div>
         <label className='signup-label'>
           <input
+          className='input'
             type='text'
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -49,6 +53,7 @@ function SignupFormPage() {
         </label>
         <label className='signup-label'>
           <input
+          className='input'
             type='text'
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
@@ -57,6 +62,7 @@ function SignupFormPage() {
         </label>
         <label className='signup-label'>
           <input
+          className='input'
             type='text'
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
@@ -65,6 +71,7 @@ function SignupFormPage() {
         </label>
         <label className='signup-label'>
           <input
+          className='input'
             type='text'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -73,6 +80,7 @@ function SignupFormPage() {
         </label>
         <label className='signup-label'>
           <input
+          className='input'
             type='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -81,6 +89,7 @@ function SignupFormPage() {
         </label>
         <label className='signup-label'>
           <input
+            className='input'
             type='password'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}

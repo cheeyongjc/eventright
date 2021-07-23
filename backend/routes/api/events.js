@@ -26,14 +26,16 @@ const validateEvent = [
 		.withMessage('Please provide a URL for the image youd like to use.'),
 	handleValidationErrors,
 ];
+//list all events
 router.get('/', asyncHandler(async (_req, res) => {
 	const events = await Event.findAll();
 	return res.json(events);
 }));
 
+//list one event
 router.get('/:id', asyncHandler(async (req, res) => {
 	const event = await Event.findByPk(req.params.id,
-		{include:[Users]});
+		{ include: [Users] });
 	return res.json(event);
 }));
 
@@ -50,6 +52,12 @@ router.post('/', validateEvent, asyncHandler(async (req, res) => {
 		image,
 	});
 	return res.json({ event });
+}));
+
+router.delete('/:id', asyncHandler(async (req, res) => {
+	const event = await Event.findByPk(req.params.id);
+	await event.destroy();
+	return res.json();
 }));
 
 module.exports = router;

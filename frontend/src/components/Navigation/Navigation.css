@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&display=swap');
-
+.nav{
+    align-content: flex-end;
+}
 .profilebtn{
     float:right;
 }
@@ -10,5 +12,5 @@
     float: right;
 }
 .createBtn{
-    align-items: flex-end;
+    float: right;
 }

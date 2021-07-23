@@ -2,6 +2,17 @@
 .login-btn-nav{
     position: relative;
     float: right;
-    margin-right: 50px;
-
+}
+.login-submit{
+    height: 200px;
+    width: 255px;
+    background-color: white;
+    display: grid;
+}
+.login-label{
+    margin-left:50px;
+}
+.loginsubmit{
+    margin-left: 50px;
+    width: 152px;
 }

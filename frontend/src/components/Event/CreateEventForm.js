@@ -26,7 +26,8 @@ function CreateEventForm() {
 
     return (
         <div className='createEventContainer'>
-            <form onSubmit={handleSubmit} className='createEventForm'>
+            <img className='create-background' src='https://photodumpeventsright.s3.us-east-2.amazonaws.com/48-487865_festival-coachella.png' alt='background'></img>
+            <form onSubmit={handleSubmit} className='create-form'>
                 <div className='createEvent-error-container'>
                     <ul>
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -34,6 +35,7 @@ function CreateEventForm() {
                 </div>
                 <label>
                     <input
+                        className='create-label'
                         type='text'
                         value={name}
                         onChange={(e) => setName(e.target.value)}
@@ -42,6 +44,7 @@ function CreateEventForm() {
                 </label>
                 <label>
                     <input
+                    className='create-label-d'
                         type='date'
                         value={date}
                         onChange={(e) => setDate(e.target.value)}
@@ -49,6 +52,7 @@ function CreateEventForm() {
                 </label>
                 <label>
                     <input
+                    className='create-label-t'
                         type='time'
                         value={start_time}
                         onChange={(e) => setStart_time(e.target.value)}
@@ -57,6 +61,7 @@ function CreateEventForm() {
                 </label>
                 <label>
                     <input
+                    className='create-label-t'
                         type='time'
                         value={end_time}
                         onChange={(e) => setEnd_Time(e.target.value)}
@@ -65,6 +70,7 @@ function CreateEventForm() {
                 </label>
                 <label>
                     <input
+                    className='create-label'
                         type='description'
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
@@ -73,13 +79,14 @@ function CreateEventForm() {
                 </label>
                 <label>
                     <input
+                    className='create-label'
                         type='text'
                         value={image}
                         onChange={(e) => setImage(e.target.value)}
                         placeholder='Enter an image URL here'
                     />
                 </label>
-                <button type='submit' className='createEventBtn'>Create New Event</button>
+                <button type='submit' className='create-btn'>Create New Event</button>
             </form>
         </div>
     )

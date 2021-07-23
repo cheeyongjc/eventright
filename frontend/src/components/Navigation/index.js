@@ -39,7 +39,7 @@ function Navigation({ isLoaded }) {
   }
   return (
     <ul>
-      <div>
+      <div className='nav'>
         <NavLink exact to="/" className='home-nav'>
           <img className='logoImage' src='https://photodumpeventsright.s3.us-east-2.amazonaws.com/large.png' alt='logo' />
         </NavLink>

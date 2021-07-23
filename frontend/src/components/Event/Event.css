@@ -6,14 +6,12 @@
     max-height: 900;
     max-width: 1920;
 }
-
 .eventBackground{
     box-sizing: border-box;
     width: 97vw;
     max-height: 600px;
     padding: 10px;
 }
-
 .eventsContainer{
     display: flex;
     width: auto;
@@ -30,7 +28,6 @@
     margin-bottom: 10px;
     margin-right: 10px;
 }
-
 .eventImages{
     width: auto;
     height: auto;
@@ -45,4 +42,33 @@
 .eventDescription{
     font-size: 14px;
     max-width: 250px;
+}
+.createEventContainer{
+    max-width: 500px;
+}
+.create-background{
+    position: absolute;
+    left: 520px;
+    z-index: 0;
+}
+.create-label{
+    width: 500px;
+}
+.create-label-d{
+    width: 502px;
+}
+.create-label-t{
+    width: 502px;
+}
+.create-input{
+    width: 500px;
+}
+.create-btn{
+    width: 509px;
+}
+.create-form{
+    position: absolute;
+    display: grid;
+    align-items: center;
+    z-index: 0;
 }

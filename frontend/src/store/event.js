@@ -13,10 +13,10 @@ export const addEvent = event => {
 		type: ADD_EVENT, event
 	};
 }
-export const deleteEvent = () => {
+export const deleteEvent = event => {
 	return {
-		type: DELETE_EVENT,
-	}
+		type: DELETE_EVENT, event
+	};
 };
 
 export const getEventThunk = () => async (dispatch) => {
@@ -47,27 +47,28 @@ export const createEventThunk = (event) => async dispatch => {
 	}
 };
 export const deleteEventThunk = (id) => async dispatch => {
+	const eventRes = await fetch(`/api/${id}`);
+	const event = await eventRes.json();
 	const response = await csrfFetch(`/api/:id`, {
 		method: 'DELETE',
 	});
-	dispatch(deleteEvent());
-	return response;
+	if (response.ok) {
+		dispatch(deleteEvent(event));
+	}
 };
 const initialState = {
 	events: []
 };
 
 const eventReducer = (state = initialState, action) => {
-	let newState;
 	switch (action.type) {
 		case GET_EVENTS:
 			return { ...state, events: [...action.events] };
 		case ADD_EVENT:
 			return { ...state, events: [action.event] };
 		case DELETE_EVENT:
-			newState = Object.assign({}, state);
-			newState.user = null;
-			return newState;
+			delete action.event
+			return { ...state, events: [...action.event] }
 		default:
 			return state;
 	}

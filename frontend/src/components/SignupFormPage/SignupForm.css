@@ -1,10 +1,23 @@
 .signup-container{
-    position: relative;
-    width: fit-content;
+    max-width: 500px;
 }
-
+.signup-background{
+    position: absolute;
+    left: 520px;
+    z-index: 0;
+}
+.signup-label{
+    width: 500px;
+}
+.input{
+    width: 500px;
+}
+.signup-btn{
+    width: 509px;
+}
 .signup-form{
+    position: absolute;
     display: grid;
     align-items: center;
+    z-index: 0;
 }
-

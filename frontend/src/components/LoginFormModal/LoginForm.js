@@ -28,6 +28,7 @@ function LoginForm() {
           <li key={idx}>{error}</li>
         ))}
       </ul>
+      <img className='logoImage' src='https://photodumpeventsright.s3.us-east-2.amazonaws.com/large.png' alt='logo' />
       <label className='login-label'>
         <input
           type="text"
@@ -44,7 +45,7 @@ function LoginForm() {
           placeholder='Password'
         />
       </label>
-      <button type="submit">Log In</button>
+      <button type="submit" className='loginsubmit'>Log In</button>
     </form>
   );
 }

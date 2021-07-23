@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getEventThunk } from '../../store/event';
+import { deleteEventThunk, getEventThunk } from '../../store/event';
 import { useHistory, useParams } from 'react-router-dom';
 import './Event.css';
 
@@ -10,20 +10,25 @@ export default function Event({ single }) {
 	const { id } = useParams();
 	const allEvents = events.find((event) => event.id === Number(id));
 	const history = useHistory();
+	// const sessionUser = useSelector(state => state.session.user);
 
 	const handleEventClick = (event, eachId) => {
 		event.preventDefault();
 		history.push(`/${eachId}`);
 	}
-
+	// const handleDeleteEvent = async () => {
+	// 	await dispatch(deleteEventThunk(id));
+	// 	history.push('/');
+	// }
 	useEffect(() => {
 		dispatch(getEventThunk());
 	}, [dispatch]);
 	if (single) {
 		return (
 			<div>
-				<h1>{allEvents?.name}</h1>
 				<img src={allEvents?.image} alt={allEvents?.name} />
+				<h1>{allEvents?.name}</h1>
+				{/* <button hidden={allEvents.hostId !== sessionUser.id} onClick={handleDeleteEvent}>Delete</button> */}
 			</div>
 		)
 	}
