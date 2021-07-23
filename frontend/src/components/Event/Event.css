@@ -50,23 +50,64 @@
     position: absolute;
     left: 520px;
     z-index: 0;
+    border-radius: 30px;
 }
 .create-label{
     width: 500px;
+    border-radius: 20px;
 }
 .create-label-d{
     width: 502px;
+    border-radius: 20px;
 }
 .create-label-t{
     width: 502px;
+    border-radius: 20px;
 }
 .create-input{
     width: 500px;
+    border-radius: 20px;
 }
 .create-btn{
     width: 509px;
+    border-radius: 20px;
 }
 .create-form{
+    position: absolute;
+    display: grid;
+    align-items: center;
+    z-index: 0;
+}
+.updateEventContainer{
+    max-width: 500px;
+}
+.update-background{
+    position: absolute;
+    left: 520px;
+    z-index: 0;
+    border-radius: 30px;
+}
+.update-label{
+    width: 500px;
+    border-radius: 20px;
+}
+.update-label-d{
+    width: 502px;
+    border-radius: 20px;
+}
+.update-label-t{
+    width: 502px;
+    border-radius: 20px;
+}
+.update-input{
+    width: 500px;
+    border-radius: 20px;
+}
+.update-btn{
+    width: 509px;
+    border-radius: 20px;
+}
+.update-form{
     position: absolute;
     display: grid;
     align-items: center;

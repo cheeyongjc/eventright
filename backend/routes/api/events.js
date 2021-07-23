@@ -1,8 +1,10 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
-const { Event } = require("../../db/models");
+const { Event, User } = require("../../db/models");
 const { check } = require('express-validator');
+const { requireAuth } = require('../../utils/auth');
 const { handleValidationErrors } = require('../../utils/validation');
+
 
 const router = express.Router();
 const validateEvent = [
@@ -40,7 +42,7 @@ router.get('/:id', asyncHandler(async (req, res) => {
 }));
 
 //create event
-router.post('/', validateEvent, asyncHandler(async (req, res) => {
+router.post('/', requireAuth, validateEvent, asyncHandler(async (req, res) => {
 	const { hostId, name, date, start_time, end_time, description, image } = req.body;
 	const event = await Event.create({
 		hostId,
@@ -54,7 +56,24 @@ router.post('/', validateEvent, asyncHandler(async (req, res) => {
 	return res.json({ event });
 }));
 
-router.delete('/:id', asyncHandler(async (req, res) => {
+router.put('/:id/edit', requireAuth, validateEvent, asyncHandler(async (req, res) => {
+	console.log(req.body);
+	const { name, date, start_time, end_time, description, image } = req.body;
+	const event = await Event.findByPk(req.params.id,
+		{ include: [User] });
+	const updateEvent = {
+		name,
+		date,
+		start_time,
+		end_time,
+		description,
+		image,
+	}
+	await event.update(updateEvent);
+	return res.json({ event });
+}));
+
+router.delete('/:id', requireAuth, asyncHandler(async (req, res) => {
 	const event = await Event.findByPk(req.params.id);
 	await event.destroy();
 	return res.json();

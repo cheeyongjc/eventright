@@ -10,27 +10,42 @@ export default function Event({ single }) {
 	const { id } = useParams();
 	const allEvents = events.find((event) => event.id === Number(id));
 	const history = useHistory();
-	// const sessionUser = useSelector(state => state.session.user);
+	const sessionUser = useSelector(state => state.session.user);
 
 	const handleEventClick = (event, eachId) => {
 		event.preventDefault();
 		history.push(`/${eachId}`);
 	}
-	// const handleDeleteEvent = async () => {
-	// 	await dispatch(deleteEventThunk(id));
-	// 	history.push('/');
-	// }
+	const handleDeleteEvent = async () => {
+		await dispatch(deleteEventThunk(id));
+		history.push('/');
+	}
+	const handleEdit = (event) => {
+		event.preventDefault();
+		history.push(`/${id}/edit`);
+	}
 	useEffect(() => {
 		dispatch(getEventThunk());
 	}, [dispatch]);
 	if (single) {
-		return (
-			<div>
-				<img src={allEvents?.image} alt={allEvents?.name} />
-				<h1>{allEvents?.name}</h1>
-				{/* <button hidden={allEvents.hostId !== sessionUser.id} onClick={handleDeleteEvent}>Delete</button> */}
-			</div>
-		)
+		if (allEvents.hostId === sessionUser.id) {
+			return (
+				<div>
+					<img src={allEvents?.image} alt={allEvents?.name} />
+					<h1>{allEvents?.name}</h1>
+					<h1>{allEvents?.description}</h1>
+					<button onClick={handleDeleteEvent}>Delete</button>
+					<button onClick={handleEdit}>Edit</button>
+				</div>
+			)
+		} else {
+			return (
+				<div>
+					<img src={allEvents?.image} alt={allEvents?.name} />
+					<h1>{allEvents?.name}</h1>
+				</div>
+			)
+		}
 	}
 	return (
 		<>
@@ -39,13 +54,13 @@ export default function Event({ single }) {
 			</div>
 			<div className='eventsContainer'>
 				{events?.map((event) => (
-					<>
-						<div className='eventContainer'>
+					<div key={event.id}>
+						<div className='eventContainer' >
 							<img className='eventImages' src={event?.image} alt={event?.name} onClick={e => handleEventClick(e, event.id)} />
-							<h1 className='eventName'>{event.name}</h1>
-							<h2 className='eventDescription'>{event.description}</h2>
+							<h1 className='eventName'>{event?.name}</h1>
+							<h2 className='eventDescription'>{event?.description}</h2>
 						</div>
-					</>
+					</div>
 				))}
 
 			</div>
