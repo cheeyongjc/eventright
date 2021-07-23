@@ -113,3 +113,25 @@
     align-items: center;
     z-index: 0;
 }
+.singleEventBackground-container{
+    position: absolute;
+    left: 520px;
+    z-index: 0;
+    border-radius: 30px;
+}
+.singleEvent-container{
+    position: absolute;
+    display: grid;
+    align-items: center;
+    z-index: 0;
+}
+.singleImage{
+    width: auto;
+    height: auto;
+    max-width: 500px;
+    max-height: 500px;
+}
+.singleInputs{
+    width: 502px;
+    font-size: 20px;
+}

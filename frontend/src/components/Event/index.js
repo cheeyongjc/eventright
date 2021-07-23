@@ -21,7 +21,7 @@ export default function Event({ single }) {
 		dispatch(deleteEventThunk(id));
 		setTimeout(() => {
 			history.push('/');
-		},1000);
+		}, 1000);
 	}
 	const handleEdit = (event) => {
 		event.preventDefault();
@@ -33,20 +33,31 @@ export default function Event({ single }) {
 	if (single) {
 		if (allEvents.hostId === sessionUser.id) {
 			return (
-				<div>
-					<img src={allEvents?.image} alt={allEvents?.name} />
-					<h1>{allEvents?.name}</h1>
-					<h1>{allEvents?.description}</h1>
-					<button onClick={handleDeleteEvent}>Delete</button>
-					<button onClick={handleEdit}>Edit</button>
-				</div>
+				<>
+					<div className='singleEventBackground-container'>
+						<img className='singleEventBackground' src='https://photodumpeventsright.s3.us-east-2.amazonaws.com/48-487865_festival-coachella.png' alt='background'></img>
+					</div>
+					<div className='singleEvent-container'>
+						<img className='singleImage' src={allEvents?.image} alt={allEvents?.name} />
+						<h1 className='singleInputs'>{allEvents?.name}</h1>
+						<h1 className='singleInputs'>{allEvents?.description}</h1>
+						<button onClick={handleDeleteEvent}>Delete</button>
+						<button onClick={handleEdit}>Edit</button>
+					</div>
+				</>
 			)
 		} else {
 			return (
-				<div>
-					<img src={allEvents?.image} alt={allEvents?.name} />
-					<h1>{allEvents?.name}</h1>
-				</div>
+				<>
+					<div className='singleEventBackground-container'>
+						<img className='singleEventBackground' src='https://photodumpeventsright.s3.us-east-2.amazonaws.com/48-487865_festival-coachella.png' alt='background'></img>
+					</div>
+					<div className='singleEvent-container'>
+						<img className='singleImage' src={allEvents?.image} alt={allEvents?.name} />
+						<h1 className='singleInputs'>{allEvents?.name}</h1>
+						<h1 className='singleInputs'>{allEvents?.description}</h1>
+					</div>
+				</>
 			)
 		}
 	}
