@@ -10,25 +10,31 @@ export default function Event({ single }) {
 	const { id } = useParams();
 	const allEvents = events.find((event) => event.id === Number(id));
 	const history = useHistory();
-	// const sessionUser = useSelector(state => state.session.user);
+	const sessionUser = useSelector(state => state.session.user);
 
 	const handleEventClick = (event, eachId) => {
 		event.preventDefault();
 		history.push(`/${eachId}`);
 	}
-	// const handleDeleteEvent = async () => {
-	// 	await dispatch(deleteEventThunk(id));
-	// 	history.push('/');
-	// }
+	const handleDeleteEvent = async () => {
+		await dispatch(deleteEventThunk(id));
+		history.push('/');
+	}
+	const handleEdit = (event, eachId) => {
+		event.preventDefault();
+		history.push(`/${id}/edit`);
+	}
 	useEffect(() => {
 		dispatch(getEventThunk());
 	}, [dispatch]);
+
 	if (single) {
 		return (
 			<div>
 				<img src={allEvents?.image} alt={allEvents?.name} />
 				<h1>{allEvents?.name}</h1>
-				{/* <button hidden={allEvents.hostId !== sessionUser.id} onClick={handleDeleteEvent}>Delete</button> */}
+				<button hidden={allEvents.hostId !== sessionUser.id} onClick={handleDeleteEvent}>Delete</button>
+				<button hidden={allEvents.hostId !== sessionUser.id} onClick={handleEdit}>Edit</button>
 			</div>
 		)
 	}

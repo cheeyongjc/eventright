@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createEventThunk } from '../../store/event';
+import './Event.css';
 
 function CreateEventForm() {
     const dispatch = useDispatch();
@@ -12,13 +13,17 @@ function CreateEventForm() {
     const [end_time, setEnd_Time] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
-    const [errors] = useState([]);
+    const [errors, setErrors] = useState([]);
     const { user } = useSelector((state) => state.session);
     const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let createdEvent = await dispatch(createEventThunk({ hostId: user.id, name, date, start_time, end_time, description, image }));
+        let createdEvent = await dispatch(createEventThunk({ hostId: user.id, name, date, start_time, end_time, description, image }))
+        .catch(async(response)=>{
+            const data = await response.json();
+            if(data && data.errors) setErrors(data.errors)
+        });
         if (createdEvent) {
             history.push(`/`);
         }
@@ -44,7 +49,7 @@ function CreateEventForm() {
                 </label>
                 <label>
                     <input
-                    className='create-label-d'
+                        className='create-label-d'
                         type='date'
                         value={date}
                         onChange={(e) => setDate(e.target.value)}
@@ -52,7 +57,7 @@ function CreateEventForm() {
                 </label>
                 <label>
                     <input
-                    className='create-label-t'
+                        className='create-label-t'
                         type='time'
                         value={start_time}
                         onChange={(e) => setStart_time(e.target.value)}
@@ -61,7 +66,7 @@ function CreateEventForm() {
                 </label>
                 <label>
                     <input
-                    className='create-label-t'
+                        className='create-label-t'
                         type='time'
                         value={end_time}
                         onChange={(e) => setEnd_Time(e.target.value)}
@@ -70,7 +75,7 @@ function CreateEventForm() {
                 </label>
                 <label>
                     <input
-                    className='create-label'
+                        className='create-label'
                         type='description'
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
@@ -79,7 +84,7 @@ function CreateEventForm() {
                 </label>
                 <label>
                     <input
-                    className='create-label'
+                        className='create-label'
                         type='text'
                         value={image}
                         onChange={(e) => setImage(e.target.value)}
