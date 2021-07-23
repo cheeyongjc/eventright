@@ -8,7 +8,7 @@ export default function Event({ single }) {
 	const dispatch = useDispatch();
 	const events = useSelector((state) => state.eventState.events);
 	const { id } = useParams();
-	const allEvents = events.find((event) => event.id === Number(id));
+	const allEvents = Object.values(events).find((event) => event.id === Number(id));
 	const history = useHistory();
 	const sessionUser = useSelector(state => state.session.user);
 
@@ -16,9 +16,12 @@ export default function Event({ single }) {
 		event.preventDefault();
 		history.push(`/${eachId}`);
 	}
-	const handleDeleteEvent = async () => {
-		await dispatch(deleteEventThunk(id));
-		history.push('/');
+	const handleDeleteEvent = (e) => {
+		e.preventDefault();
+		dispatch(deleteEventThunk(id));
+		setTimeout(() => {
+			history.push('/');
+		},1000);
 	}
 	const handleEdit = (event) => {
 		event.preventDefault();
@@ -53,7 +56,7 @@ export default function Event({ single }) {
 				<img className='eventBackground' src='https://photodumpeventsright.s3.us-east-2.amazonaws.com/48-487865_festival-coachella.png' alt='background'></img>
 			</div>
 			<div className='eventsContainer'>
-				{events?.map((event) => (
+				{Object.values(events).map((event) => (
 					<div key={event.id}>
 						<div className='eventContainer' >
 							<img className='eventImages' src={event?.image} alt={event?.name} onClick={e => handleEventClick(e, event.id)} />
