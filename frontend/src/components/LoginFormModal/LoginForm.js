@@ -9,6 +9,16 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
+  const demo = () => {
+    const demo = 'demo';
+    const password = 'password'
+    return dispatch(sessionActions.login({ 'credential': demo, 'password': password }))
+      .catch(async (response) => {
+        const data = await response.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -46,6 +56,7 @@ function LoginForm() {
         />
       </label>
       <button type="submit" className='loginsubmit'>Log In</button>
+      <button type="submit" className='demosubmit' onClick={demo}>Demo</button>
     </form>
   );
 }
