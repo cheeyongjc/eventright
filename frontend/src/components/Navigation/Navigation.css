@@ -1,16 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&display=swap');
 .nav{
     align-content: flex-end;
+    width: 1810px;
 }
 .profilebtn{
     float:right;
+    right: 20px;
 }
 .profile-dropdown{
     float:right;
+    right: 20px;
 }
 .signupBtn{
     float: right;
+    right: 20px;
 }
 .createBtn{
     float: right;
+    right: 20px;
 }

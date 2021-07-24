@@ -4,20 +4,22 @@
     width: auto;
     height: auto;
     max-height: 900;
-    max-width: 1920;
+    max-width: 100%;
 }
 .eventBackground{
     box-sizing: border-box;
-    width: 97vw;
+    width: 100%;
     max-height: 600px;
     padding: 10px;
 }
 .eventsContainer{
     display: flex;
     width: auto;
+    margin-left: 150px;
     height: 800px;
-    max-width: 1900px;
+    max-width: 1700px;
     flex-wrap: wrap;
+
 }
 .eventContainer{
     width: 300px;
