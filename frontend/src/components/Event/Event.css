@@ -22,6 +22,7 @@
 
 }
 .eventContainer{
+    position: relative;
     width: 300px;
     height: 370px;
     flex-direction: row;
@@ -29,21 +30,26 @@
     margin-left: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
+    border-style: hidden;
+    border-width: 10px;
+    box-shadow: 1px 1px 1px 1px rgba(240, 236, 236, 0.801);
+    z-index: 10;
+
 }
 .eventImages{
     width: auto;
     height: auto;
-    max-width: 250px;
+    max-width: 300px;
     max-height: 150px;
 }
 .eventName{
     color: orangered;
     font-size: 18px;
-    max-width: 250px;
+    max-width: 275px;
 }
 .eventDescription{
     font-size: 14px;
-    max-width: 250px;
+    max-width: 300px;
 }
 .createEventContainer{
     max-width: 500px;
@@ -125,7 +131,10 @@
     position: absolute;
     display: grid;
     align-items: center;
-    z-index: 0;
+    border-style: hidden;
+    border-width: 10px;
+    box-shadow: 1px 1px 1px 1px rgba(240, 236, 236, 0.801);
+    z-index: 10;
 }
 .singleImage{
     width: auto;

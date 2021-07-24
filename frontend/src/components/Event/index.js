@@ -71,7 +71,8 @@ export default function Event({ single }) {
 					<div className='singleEvent-container'>
 						<img className='singleImage' src={allEvents?.image} alt={allEvents?.name} />
 						<h1 className='singleInputs'>{allEvents?.name}</h1>
-						<h1 className='singleInputs'>{allEvents?.description}</h1>
+						<h2>About this event:</h2>
+						<p className='singleInputs'>{allEvents?.description}</p>
 					</div>
 				</>
 			)
@@ -84,7 +85,8 @@ export default function Event({ single }) {
 					<div className='singleEvent-container'>
 						<img className='singleImage' src={allEvents?.image} alt={allEvents?.name} />
 						<h1 className='singleInputs'>{allEvents?.name}</h1>
-						<h1 className='singleInputs'>{allEvents?.description}</h1>
+						<h2>About this event:</h2>
+						<p className='singleInputs'>{allEvents?.description}</p>
 					</div>
 				</>
 			)
@@ -97,7 +99,8 @@ export default function Event({ single }) {
 					<div className='singleEvent-container'>
 						<img className='singleImage' src={allEvents?.image} alt={allEvents?.name} />
 						<h1 className='singleInputs'>{allEvents?.name}</h1>
-						<h1 className='singleInputs'>{allEvents?.description}</h1>
+						<h2>About this event:</h2>
+						<p className='singleInputs'>{allEvents?.description}</p>
 						<button onClick={handleDeleteEvent}>Delete</button>
 						<button onClick={handleEdit}>Edit</button>
 					</div>
@@ -116,7 +119,7 @@ export default function Event({ single }) {
 						<div className='eventContainer' >
 							<img className='eventImages' src={event?.image} alt={event?.name} onClick={e => handleEventClick(e, event.id)} />
 							<h1 className='eventName'>{event?.name}</h1>
-							<h2 className='eventDescription'>{event?.description}</h2>
+							<p className='eventDescription'>{event?.description}</p>
 						</div>
 					</div>
 				))}

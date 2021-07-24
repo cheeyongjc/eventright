@@ -21,10 +21,10 @@ function CreateEventForm() {
         e.preventDefault();
         setErrors([]);
         let createdEvent = await dispatch(createEventThunk({ hostId: user.id, name, date, start_time, end_time, description, image }))
-        .catch(async(response)=>{
-            const data = await response.json();
-            if(data && data.errors) setErrors(data.errors)
-        });
+            .catch(async (response) => {
+                const data = await response.json();
+                if (data && data.errors) setErrors(data.errors)
+            });
         if (createdEvent) {
             history.push(`/`);
         }
@@ -32,6 +32,7 @@ function CreateEventForm() {
 
     return (
         <div className='createEventContainer'>
+            <h1>Create your event here</h1>
             <img className='create-background' src='https://photodumpeventsright.s3.us-east-2.amazonaws.com/48-487865_festival-coachella.png' alt='background'></img>
             <form onSubmit={handleSubmit} className='create-form'>
                 <div className='createEvent-error-container'>

@@ -8,12 +8,15 @@
 }
 .signup-label{
     width: 500px;
+    border-radius: 20px;
 }
 .input{
     width: 500px;
+    border-radius: 20px;
 }
 .signup-btn{
     width: 509px;
+    border-radius: 20px;
 }
 .signup-form{
     position: absolute;
