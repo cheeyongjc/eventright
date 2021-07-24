@@ -62,7 +62,20 @@ export default function Event({ single }) {
 	// 	}
 	// }
 	if (single) {
-		if (user === undefined || allEvents.hostId !== sessionUser.id) {
+		if (user === undefined) {
+			return (
+				<>
+					<div className='singleEventBackground-container'>
+						<img className='singleEventBackground' src='https://photodumpeventsright.s3.us-east-2.amazonaws.com/48-487865_festival-coachella.png' alt='background'></img>
+					</div>
+					<div className='singleEvent-container'>
+						<img className='singleImage' src={allEvents?.image} alt={allEvents?.name} />
+						<h1 className='singleInputs'>{allEvents?.name}</h1>
+						<h1 className='singleInputs'>{allEvents?.description}</h1>
+					</div>
+				</>
+			)
+		} else if (allEvents.hostId !== sessionUser.id) {
 			return (
 				<>
 					<div className='singleEventBackground-container'>
